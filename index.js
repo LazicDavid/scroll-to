@@ -38,6 +38,9 @@ function scrollTo(x, y, options) {
 
   // handle end
   tween.on('end', function(){
+    if (options.cb) {
+      options.cb();
+    }
     animate = function(){};
   });
 
