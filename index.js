@@ -3,7 +3,13 @@
  */
 
 var Tween = require('tween');
-var raf = require('raf');
+
+const requestAnimationFrame = window.requestAnimationFrame ||
+  window.webkitRequestAnimationFrame ||
+  window.mozRequestAnimationFrame ||
+  function (callback) {
+    window.setTimeout(callback, 1000 / 60);
+  };
 
 /**
  * Expose `scrollTo`.
@@ -38,20 +44,17 @@ function scrollTo(x, y, options) {
 
   // handle end
   tween.on('end', function(){
-    if (options.cb) {
-      options.cb();
-    }
     animate = function(){};
   });
 
   // animate
   function animate() {
-    raf(animate);
+    requestAnimationFrame(animate);
     tween.update();
   }
 
   animate();
-  
+
   return tween;
 }
 

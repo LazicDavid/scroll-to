@@ -8,11 +8,9 @@
     "scroll-to"
   ],
   "dependencies": {
-    "component-raf": "1.2.0",
     "component-tween": "1.2.0"
   },
   "browser": {
-    "raf": "component-raf",
     "tween": "component-tween"
   },
   "license": "MIT",
